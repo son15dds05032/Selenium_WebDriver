@@ -1,0 +1,43 @@
+package login;
+
+import org.testng.annotations.Test;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.testng.annotations.BeforeClass;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+//import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+
+public class Case_Login_Failed_1 {
+  WebDriver driver;
+  @BeforeClass
+  public void beforeClass() {
+	  WebDriverManager.chromedriver().setup();
+	  driver = new ChromeDriver();
+  }
+  @Test(description = "Login failed with username null")
+  public void Failed_1() {
+	  driver.get("https://www.muabannhanh.xyz");
+	  driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/div/form/div[1]/input")).click();
+	  driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/div/form/div[1]/input")).sendKeys("");
+//	  click user name and input user name null
+	  driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/div/form/div[2]/input")).click();
+	  driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/div/form/div[2]/input")).sendKeys("123456789");
+//	  click password and input password
+	  driver.findElement(By.xpath("/html/body/div[2]/div[1]/div[2]/div/form/button")).click();
+//	  click button "Login"
+//	  WebElement mesage = driver.findElement(By.xpath("/html/body/div[2]/div[1]/div/div/form/h3"));
+//	  String string = mesage.getText();
+//	  Assert.assertNotNull(string);
+//	  System.out.println("Alert " + string);
+	  
+  }
+  @AfterClass
+  public void afterClass() {
+	  System.out.println("Error: Username not null");
+	  driver.close();
+  }
+
+}
